@@ -3,6 +3,30 @@
 #include <string.h>
 #define size 1024
 
+int mstrcmp(char *str1, char *str2){			// 미완성
+	int result=0, int count = 0;
+
+	do{
+		result=str1-str2;
+	}
+
+	while(result==0 && str1[count]!='\0'){
+	}
+
+	return result;
+}
+
+int main(){
+	char *input1=(char *)malloc(sizeof(char)*size);
+	char *input2=(char *)malloc(sizeof(char)*size);
+	printf("두 개의 문자열 입력 : ");
+	scanf("%s %s", input1, input2);
+	int cmp=mstrcmp(input1, input2);
+	return 0;
+}
+
+/*
+
 char * strcat(char *str1, char *str2){
 	char *result;
 	int size1, size2, count;
@@ -45,6 +69,7 @@ int main(){
 	return 0;
 }
 
+*/
 
 /*
 
