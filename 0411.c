@@ -3,6 +3,49 @@
 #include <string.h>
 #define size 1024
 
+char * strcat(char *str1, char *str2){
+	char *result;
+	int size1, size2, count;
+
+	// str1 사이즈 구하기
+	size1=strlen(str1);
+
+	// str2 사이즈 구하기
+	size2=strlen(str2);
+
+	// result 생성하기
+	result=(char *)malloc(sizeof(char)*(size1 + size2)+1);		// (size1 + size) 뒤에 +1하는 이유는 NULL 값을 넣기 위함
+
+	// str1 붙이기
+	for(count=0; str1[count]!='\0'; count++){
+		result[count]=str1[count];
+	}
+
+	// str2 붙이기
+	for(count=0; str2[count]!='\0'; count++){
+		result[count+size1]=str2[count];		// size1의 값 뒤에 넣어야하기 떄문에 result[count+size]를 해준것
+	}
+	result[count+size1]='\0';			// size 값 뒤에 NULL 값을 넣어 쓰레기 값 삭제
+
+	return result;
+}
+
+int main(){
+
+	char *input1=(char *)malloc(sizeof(char)*size);
+	char *input2=(char *)malloc(sizeof(char)*size);
+	char *result;
+	printf("문자열 2개 입력 : ");
+	scanf("%s %s", input1, input2);
+	result=strcat(input1, input2);
+	printf("%\n\n%s\n\n", result);
+	free(input1);
+	free(input2);
+	free(result);
+	return 0;
+}
+
+
 /*
 
 void q(char *src, char *crs){
@@ -76,45 +119,3 @@ int main(){
 }
 
 */
-
-char * strcat(char *str1, char *str2){
-	char *result;
-	int size1, size2, count;
-
-	// str1 사이즈 구하기
-	size1=strlen(str1);
-
-	// str2 사이즈 구하기
-	size2=strlen(str2);
-
-	// result 생성하기
-	result=(char *)malloc(sizeof(char)*(size1 + size2)+1);		// (size1 + size) 뒤에 +1하는 이유는 NULL 값을 넣기 위함
-
-	// str1 붙이기
-	for(count=0; str1[count]!='\0'; count++){
-		result[count]=str1[count];
-	}
-
-	// str2 붙이기
-	for(count=0; str2[count]!='\0'; count++){
-		result[count+size1]=str2[count];		// size1의 값 뒤에 넣어야하기 떄문에 result[count+size]를 해준것
-	}
-	result[count+size1]='\0';			// size 값 뒤에 NULL 값을 넣어 쓰레기 값 삭제
-
-	return result;
-}
-
-int main(){
-
-	char *input1=(char *)malloc(sizeof(char)*size);
-	char *input2=(char *)malloc(sizeof(char)*size);
-	char *result;
-	printf("문자열 2개 입력 : ");
-	scanf("%s %s", input1, input2);
-	result=strcat(input1, input2);
-	printf("%\n\n%s\n\n", result);
-	free(input1);
-	free(input2);
-	free(result);
-	return 0;
-}
